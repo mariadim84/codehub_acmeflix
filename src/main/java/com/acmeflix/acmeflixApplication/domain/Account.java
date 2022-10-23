@@ -7,6 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -28,6 +29,6 @@ public class Account extends BaseModel{
     @NotNull
     @Column(length = 20, nullable = false)
     private String lastname;
-    @OneToMany
-    private List<User> users;
+    @OneToMany(fetch = FetchType. EAGER)
+    private Set<User> users;
 }

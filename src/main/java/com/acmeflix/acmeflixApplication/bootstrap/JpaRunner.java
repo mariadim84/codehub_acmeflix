@@ -2,11 +2,12 @@ package com.acmeflix.acmeflixApplication.bootstrap;
 
 import com.acmeflix.acmeflixApplication.base.BaseComponent;
 import com.acmeflix.acmeflixApplication.domain.*;
-import com.acmeflix.acmeflixApplication.service.BaseService;
-import com.acmeflix.acmeflixApplication.service.ProgramService;
-import com.acmeflix.acmeflixApplication.service.MovieService;
+import com.acmeflix.acmeflixApplication.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
@@ -17,6 +18,9 @@ public class JpaRunner extends BaseComponent implements CommandLineRunner {
     private final ProgramService programService;
     private final BaseService languageService;
     private final BaseService subtitleService;
+    private final BaseService movieService;
+    private final AccountService accountService;
+    private final UserService userService;
 
 
 
@@ -51,35 +55,35 @@ public class JpaRunner extends BaseComponent implements CommandLineRunner {
 
         List<Program> programs = programService.createAll(
                 Program.builder().title("Great Expectations")
-                        .category(Category.DRAMA)
+                        .category(Category.DRAMA.toString())
                         .rating(4.5f)
                         .recommendations(new HashSet<>())
                         .subtitles(subtitles1)
                         .languages(languages1)
                         .build(),
                 Program.builder().title("Rocky")
-                        .category(Category.ACTION)
+                        .category(Category.ACTION.toString())
                         .rating(4.0f)
                         .recommendations(new HashSet<>())
                         .subtitles(subtitles1)
                         .languages(languages1)
                         .build(),
                 Program.builder().title("Pulp Fiction")
-                        .category(Category.DRAMA)
+                        .category(Category.DRAMA.toString())
                         .rating(5.0f)
                         .recommendations(new HashSet<>())
                         .subtitles(subtitles1)
                         .languages(languages1)
                         .build(),
                 Program.builder().title(" A Clockwork Orange ")
-                        .category(Category.SCIFI)
+                        .category(Category.SCIFI.toString())
                         .rating(4.5f)
                         .recommendations(new HashSet<>())
                         .subtitles(subtitles1)
                         .languages(languages1)
                         .build(),
                 Program.builder().title("Inception")
-                        .category(Category.ACTION)
+                        .category(Category.ACTION.toString())
                         .rating(5f)
                         .recommendations(new HashSet<>())
                         .subtitles(subtitles1)
@@ -88,6 +92,40 @@ public class JpaRunner extends BaseComponent implements CommandLineRunner {
         ;
         programs.forEach(programService::create);
 
+     /*   List<Movie> movies = movieService.createAll(
+                Movie.builder()
+                        .title("Pulp Fiction")
+                        .category(Category.DRAMA)
+                        .rating(5.0f)
+                        .recommendations(new HashSet<>())
+                        .subtitles(subtitles1)
+                        .languages(languages1)
+                        .build());
+        movies.forEach(movieService::create);*/
+
+        List<Account> accounts = accountService.createAll(
+                Account.builder().email("mariadim84@gmail.com")
+                        .firstname("Maria")
+                        .lastname("Dimitropoulou")
+                        .users(new HashSet<>())
+                        .build(),
+                Account.builder().email("florazineli@gmail.com")
+                        .firstname("Flora")
+                        .lastname("Zineli")
+                        .users(new HashSet<>())
+                        .build());
+        accounts.forEach(accountService::create);
+
+        List<User> users = userService.createAll(
+                User.builder().username("mariadim")
+                        .age(39)
+                        .recommendedPrograms(new HashSet<>())
+                        .build(),
+                User.builder().username("nikos")
+                        .age(20)
+                        .recommendedPrograms(new HashSet<>())
+                        .build());
+        users.forEach(userService::create);
+
     }
-    //@formatter:on
 }

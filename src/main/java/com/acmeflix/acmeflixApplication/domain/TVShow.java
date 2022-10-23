@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "TVSHOW")
-public class TVShow extends BaseModel
+public class TVShow extends BaseModel//Program
 {
     private Integer duration;
     private Integer allowedAge;

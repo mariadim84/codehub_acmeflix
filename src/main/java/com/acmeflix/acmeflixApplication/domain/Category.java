@@ -9,7 +9,4 @@ public enum Category {
         this.categoryDesc = Category;
     }
 
-    public String getCategory() {
-        return this.categoryDesc;
-    }
 }

@@ -2,11 +2,9 @@ package com.acmeflix.acmeflixApplication.domain;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -16,10 +14,10 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "USERS")
-@SequenceGenerator(name = "idGenerator", sequenceName = "PRODUCTS_SEQ", initialValue = 1, allocationSize = 1)
+@SequenceGenerator(name = "idGenerator", sequenceName = "USERS_SEQ", initialValue = 1, allocationSize = 1)
 public class User extends BaseModel{
     private String username;
     private Integer age;
-    @OneToMany
-    private List<Program> recommendedPrograms;
+    @OneToMany(fetch = FetchType. EAGER)
+    private Set<Program> recommendedPrograms;
 }
