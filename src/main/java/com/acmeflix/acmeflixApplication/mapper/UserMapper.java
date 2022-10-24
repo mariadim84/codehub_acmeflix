@@ -1,6 +1,4 @@
 package com.acmeflix.acmeflixApplication.mapper;
-
-
 import com.acmeflix.acmeflixApplication.base.BaseMapper;
 import com.acmeflix.acmeflixApplication.domain.User;
 import com.acmeflix.acmeflixApplication.resource.UserResource;

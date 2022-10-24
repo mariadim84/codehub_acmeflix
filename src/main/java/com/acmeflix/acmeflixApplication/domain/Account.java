@@ -1,12 +1,9 @@
 package com.acmeflix.acmeflixApplication.domain;
-
-
 import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
-import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -17,7 +14,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Entity
 @Table(name = "ACCOUNTS")
-@SequenceGenerator(name = "idGenerator", sequenceName = "PRODUCTS_SEQ", initialValue = 1, allocationSize = 1)
+@SequenceGenerator(name = "idGenerator", sequenceName = "ACCOUNT_SEQ", initialValue = 1, allocationSize = 1)
 public class Account extends BaseModel{
     @NotNull
     @Email
@@ -29,6 +26,7 @@ public class Account extends BaseModel{
     @NotNull
     @Column(length = 20, nullable = false)
     private String lastname;
-    @OneToMany(fetch = FetchType. EAGER)
+    @ToString.Exclude
+    @OneToMany (cascade = CascadeType.MERGE, fetch = FetchType. EAGER)
     private Set<User> users;
 }

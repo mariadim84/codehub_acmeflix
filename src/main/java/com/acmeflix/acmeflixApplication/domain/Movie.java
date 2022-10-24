@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "MOVIES")
-public class Movie extends BaseModel//Program
+public class Movie extends BaseModel
 {
     @Column
     private Integer duration;

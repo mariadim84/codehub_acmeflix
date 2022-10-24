@@ -1,6 +1,5 @@
 package com.acmeflix.acmeflixApplication.resource;
 
-import com.acmeflix.acmeflixApplication.domain.Category;
 import com.acmeflix.acmeflixApplication.domain.User;
 import lombok.Getter;
 import lombok.Setter;

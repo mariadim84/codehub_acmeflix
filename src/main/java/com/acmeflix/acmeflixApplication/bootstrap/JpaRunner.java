@@ -5,9 +5,6 @@ import com.acmeflix.acmeflixApplication.domain.*;
 import com.acmeflix.acmeflixApplication.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
@@ -92,32 +89,22 @@ public class JpaRunner extends BaseComponent implements CommandLineRunner {
         ;
         programs.forEach(programService::create);
 
-     /*   List<Movie> movies = movieService.createAll(
+    /*    List<Movie> movies = movieService.createAll(
                 Movie.builder()
                         .title("Pulp Fiction")
-                        .category(Category.DRAMA)
+                        .category(Category.DRAMA.toString())
                         .rating(5.0f)
                         .recommendations(new HashSet<>())
                         .subtitles(subtitles1)
                         .languages(languages1)
+                        .duration(50)
+                        .allowedAge(18)
+                        .year(1999)
                         .build());
         movies.forEach(movieService::create);*/
 
-        List<Account> accounts = accountService.createAll(
-                Account.builder().email("mariadim84@gmail.com")
-                        .firstname("Maria")
-                        .lastname("Dimitropoulou")
-                        .users(new HashSet<>())
-                        .build(),
-                Account.builder().email("florazineli@gmail.com")
-                        .firstname("Flora")
-                        .lastname("Zineli")
-                        .users(new HashSet<>())
-                        .build());
-        accounts.forEach(accountService::create);
-
         List<User> users = userService.createAll(
-                User.builder().username("mariadim")
+                User.builder().username("mariadim84")
                         .age(39)
                         .recommendedPrograms(new HashSet<>())
                         .build(),
@@ -126,6 +113,21 @@ public class JpaRunner extends BaseComponent implements CommandLineRunner {
                         .recommendedPrograms(new HashSet<>())
                         .build());
         users.forEach(userService::create);
+
+        final Set<User> users1 = new HashSet<User>();
+        users1.add(users.get(0));
+        List<Account> accounts = accountService.createAll(
+                Account.builder().email("mariadim84@gmail.com")
+                        .firstname("Maria")
+                        .lastname("Dimitropoulou")
+                        .users(users1)
+                        .build(),
+                Account.builder().email("florazineli@gmail.com")
+                        .firstname("Flora")
+                        .lastname("Zineli")
+                        .users(new HashSet<>())
+                        .build());
+        accounts.forEach(accountService::create);
 
     }
 }

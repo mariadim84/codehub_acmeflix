@@ -1,7 +1,6 @@
 package com.acmeflix.acmeflixApplication.service;
 
 import com.acmeflix.acmeflixApplication.domain.User;
-import com.acmeflix.acmeflixApplication.domain.Program;
 import com.acmeflix.acmeflixApplication.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;

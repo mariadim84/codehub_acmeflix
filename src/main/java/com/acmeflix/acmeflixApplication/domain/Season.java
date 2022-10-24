@@ -14,7 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "SEASONS")
-@SequenceGenerator(name = "idGenerator", sequenceName = "SEASONS_SEQ", initialValue = 1, allocationSize = 1)
+@SequenceGenerator(name = "idGenerator", sequenceName = "SEASON_SEQ", initialValue = 1, allocationSize = 1)
 public class Season extends BaseModel{
     @NotNull
     private Integer seasonNumber;

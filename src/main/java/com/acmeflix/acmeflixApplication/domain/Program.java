@@ -1,13 +1,9 @@
 package com.acmeflix.acmeflixApplication.domain;
 
 import lombok.*;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-import org.springframework.context.annotation.Primary;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -19,7 +15,7 @@ import java.util.Set;
 @Entity
 //@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Table(name = "PROGRAMS")
-@SequenceGenerator(name = "idGenerator", sequenceName = "PROGRAMS_SEQ", initialValue = 1, allocationSize = 1)
+@SequenceGenerator(name = "idGenerator", sequenceName = "PROGRAM_SEQ", initialValue = 1, allocationSize = 1)
 public class Program extends BaseModel{
     @NotNull
     @Column(length = 100, nullable = false)

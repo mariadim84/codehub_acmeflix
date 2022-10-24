@@ -1,9 +1,7 @@
 package com.acmeflix.acmeflixApplication.domain;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-
 import javax.persistence.*;
-import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -14,10 +12,13 @@ import java.util.Set;
 @AllArgsConstructor
 @Entity
 @Table(name = "USERS")
-@SequenceGenerator(name = "idGenerator", sequenceName = "USERS_SEQ", initialValue = 1, allocationSize = 1)
+@SequenceGenerator(name = "idGenerator", sequenceName = "USER_SEQ", initialValue = 1, allocationSize = 1)
 public class User extends BaseModel{
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType. EAGER)
+    @JsonIgnore
+    private Account account;
     private String username;
     private Integer age;
-    @OneToMany(fetch = FetchType. EAGER)
+    @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType. EAGER)
     private Set<Program> recommendedPrograms;
 }

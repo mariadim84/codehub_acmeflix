@@ -1,6 +1,5 @@
 package com.acmeflix.acmeflixApplication.service;
 
-import com.acmeflix.acmeflixApplication.domain.Category;
 import com.acmeflix.acmeflixApplication.domain.Program;
 
 import java.util.List;
